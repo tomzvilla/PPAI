@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace PPAI.Entidades
 {
-    class Tarifa
+    public class Tarifa
     {
+        public int id_tarifa { get; set; }
         public DateTime? fechaFinVigencia { get; set; }
         public DateTime? fechaInicioVigencia { get; set; }
         public int Monto { get; set; }
@@ -16,18 +17,34 @@ namespace PPAI.Entidades
         public TipoVisita tipoVisita { get; set; }
         
         
-        /*
-             def conocerEntrada(self):
-        return self.tipoEntrada.mostrarNombre()
-    def conocerVisita(self):
-        return self.tipoVisita.mostrarNombre()
+        public TipoEntrada conocerEntrada()
+        {
+            return this.tipoEntrada;
+        }
 
-    def mostrarMontosVigentes(self, fecha):
-        if self.fechaFinVigencia > fecha:
-            return self
-        else:
-            return []
-         */
+        public TipoVisita conocerVisita()
+        {
+            return this.tipoVisita;
+        }
+        
+        public Tarifa buscarTarifasVigentes(DateTime? fecha)
+        {
+            // Mensaje que verifica si la fecha pasada como parametro es anterior a la fecha fin de vigencia,
+            // es decir, verifica si la tarifa es vigente.
+            if (this.fechaFinVigencia > fecha)
+                return this;
+            else
+                return null;
+        }
+
+        public List<string> buscarDatosTarifasVigentes()
+        {
+            // Devuelve un array con el nombre del tipo Entrada y tipo Visita
+            var listado = new List<string>();
+            listado.Add(this.tipoEntrada.mostrarNombre());
+            listado.Add(this.tipoVisita.mostrarNombre());
+            return listado;
+        }
 
 
 

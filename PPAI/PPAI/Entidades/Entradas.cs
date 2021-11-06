@@ -20,25 +20,31 @@ namespace PPAI.Entidades
         public Tarifa tarifa { get; set; }
         public Sede sede { get; set; }
 
-        
+        public bool esDeFechayHoraSede(int sedeActual, DateTime fechaActual)
+        {
+            //Este mensaje, verifica si una entrada esta asociada a la sede
+            //que se le paso por parametro, y si es de la fecha que se le paso
+            //por parametro. Devuelve un valor booleano
+
+            if (this.sede.id_sede == sedeActual)
+            {
+                if(this.FechaVenta.Date == fechaActual.Date)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public int getNumero()
+        {
+            // Devuelve el numero de la entrada
+            return this.Numero;
+        }
 
 
 
-        //def getNumero(self):
-        //return self.numero
-        
-        //     def conocerSede(self):
-        //return self.sede.mostrarNombre()
 
-        //def conocerTarifa(self):
-        //    return self.tarifa
 
-        //def esDeFechayHoraSede(self, sede, fecha):
-        //    if self.sede.mostrarNombre() == sede.mostrarNombre():
-        //    if self.fechaVenta == fecha:
-        //        return True
-        //return False
-         
-         
     }
 }

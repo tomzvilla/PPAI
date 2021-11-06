@@ -8,7 +8,8 @@ namespace PPAI.Entidades
 {
     public class Empleado
     {
-        public String apellido { get; set; }
+        public string apellido { get; set; }
+        public string nombre { get; set; }
         public int codigoValidacion { get; set; }
         public int cuit { get; set; }
         public int dni { get; set; }
@@ -24,7 +25,7 @@ namespace PPAI.Entidades
         public Sede sede { get; set; }
 
 
-        public Sede GetSede()
+        public Sede getSede()
         {
             return this.sede;
         }

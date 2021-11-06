@@ -32,9 +32,27 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>PPAI.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.5.0.2\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.5.0.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,14 +64,99 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="ClasesDiseño\EstrategiaDuracionCompleta.cs" />
+    <Compile Include="ClasesDiseño\IEstrategiaCalcularDuracionExposicion.cs" />
+    <Compile Include="Entidades\DetalleExposicion.cs" />
+    <Compile Include="Entidades\Empleado.cs" />
+    <Compile Include="Entidades\Entradas.cs" />
+    <Compile Include="Entidades\Exposicion.cs" />
+    <Compile Include="Entidades\Obra.cs" />
+    <Compile Include="Entidades\ReservaVisita.cs" />
+    <Compile Include="Entidades\Sede.cs" />
+    <Compile Include="Entidades\Sesion.cs" />
+    <Compile Include="Entidades\Tarifa.cs" />
+    <Compile Include="Entidades\TipoEntrada.cs" />
+    <Compile Include="Entidades\TipoVisita.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Gestor\GestorVentaEntradas.cs" />
+    <Compile Include="Interfaces\detalleEntrada.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Interfaces\detalleEntrada.Designer.cs">
+      <DependentUpon>detalleEntrada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Impresora.cs" />
+    <Compile Include="Interfaces\pantallaRegistrarVentaEntradas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\pantallaRegistrarVentaEntradas.Designer.cs">
+      <DependentUpon>pantallaRegistrarVentaEntradas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\pantallaRegistrarVentaEntradas2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\pantallaRegistrarVentaEntradas2.Designer.cs">
+      <DependentUpon>pantallaRegistrarVentaEntradas2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\PantallaSala1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\PantallaSala1.Designer.cs">
+      <DependentUpon>PantallaSala1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\PantallaSede.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\PantallaSede.Designer.cs">
+      <DependentUpon>PantallaSede.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoriosBD\DBHelper.cs" />
+    <Compile Include="RepositoriosBD\DetalleExposicionRepositorio.cs" />
+    <Compile Include="RepositoriosBD\ReservaVisitaRepositorio.cs" />
+    <Compile Include="RepositoriosBD\EntradaRepositorio.cs" />
+    <Compile Include="RepositoriosBD\ExposicionRepositorio.cs" />
+    <Compile Include="RepositoriosBD\ObraRepositorio.cs" />
+    <Compile Include="RepositoriosBD\TipoVisitaRepositorio.cs" />
+    <Compile Include="RepositoriosBD\TipoEntradaRepositorio.cs" />
+    <Compile Include="RepositoriosBD\TarifaRepositorio.cs" />
+    <Compile Include="RepositoriosBD\SedeRepositorio.cs" />
+    <Compile Include="RepositoriosBD\EmpleadoRepositorio.cs" />
+    <Compile Include="Servicios\DetalleExposicionServicio.cs" />
+    <Compile Include="Servicios\ReservaVisitaServicio.cs" />
+    <Compile Include="Servicios\EntradaServicio.cs" />
+    <Compile Include="Servicios\ObraServicio.cs" />
+    <Compile Include="Servicios\ExposicionServicio.cs" />
+    <Compile Include="Servicios\TipoVisitaServicio.cs" />
+    <Compile Include="Servicios\TipoEntradaServicio.cs" />
+    <Compile Include="Servicios\TarifaServicio.cs" />
+    <Compile Include="Servicios\SedeServicio.cs" />
+    <Compile Include="Servicios\EmpleadoServicio.cs" />
+    <EmbeddedResource Include="Interfaces\detalleEntrada.resx">
+      <DependentUpon>detalleEntrada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\pantallaRegistrarVentaEntradas.resx">
+      <DependentUpon>pantallaRegistrarVentaEntradas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\pantallaRegistrarVentaEntradas2.resx">
+      <DependentUpon>pantallaRegistrarVentaEntradas2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\PantallaSala1.resx">
+      <DependentUpon>PantallaSala1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\PantallaSede.resx">
+      <DependentUpon>PantallaSede.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +166,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -76,5 +180,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

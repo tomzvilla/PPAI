@@ -8,6 +8,7 @@ namespace PPAI.Entidades
 {
     public class Obra
     {
+        public int id_obra { get; set; }
         public int alto { get; set; }
         public int ancho { get; set; }
         public int codigoSensor { get; set; }
@@ -15,6 +16,7 @@ namespace PPAI.Entidades
         public int duracionExtendida { get; set; }
         public int duracionResumida { get; set; }
         public DateTime? fechaCreacion { get; set; }
+
         public DateTime? fechaPrimerIngreso { get; set; }
         public String nombreObra { get; set; }
         public int peso { get; set; }
@@ -34,47 +36,50 @@ namespace PPAI.Entidades
         //public TipoIngreso tipoIngreso { get; set; }
         //public List<Archivo> archivo { get; set; }
 
-    //    def getDuracionResumida(self):
-    //    # Devuelve la cantidad de minutos que demora el guia en explicar la obra en forma resumida
-    //    return self.duracionResumida
 
-    //def conocerArtista(self) :
-    //    pass
+        public int getDuracionResumida()
+        {
+            // Devuelve la cantidad de minutos que demora el guia en explicar la obra en forma resumida
+            return this.duracionResumida;
+        }
 
-    //def conocerCambioEstado(self) :
-    //    pass
+        //def conocerArtista(self) :
+        //    pass
 
-    //def conocerCompra(self) :
-    //    pass
+        //def conocerCambioEstado(self) :
+        //    pass
 
-    //def conocerDonacion(self) :
-    //    pass
+        //def conocerCompra(self) :
+        //    pass
 
-    //def conocerEmpleado(self) :
-    //    pass
+        //def conocerDonacion(self) :
+        //    pass
 
-    //def conocerEstilo(self) :
-    //    pass
+        //def conocerEmpleado(self) :
+        //    pass
 
-    //def conocerPrestamo(self) :
-    //    pass
+        //def conocerEstilo(self) :
+        //    pass
 
-    //def conocerPrestamoAMuseo(self) :
-    //    pass
+        //def conocerPrestamo(self) :
+        //    pass
 
-    //def conocerRestauracion(self) :
-    //    pass
+        //def conocerPrestamoAMuseo(self) :
+        //    pass
 
-    //def conocerSectorAsignado(self) :
-    //    pass
+        //def conocerRestauracion(self) :
+        //    pass
 
-    //def conocerTecnica(self) :
-    //    pass
+        //def conocerSectorAsignado(self) :
+        //    pass
 
-    //def conocerTematica(self) :
-    //    pass
+        //def conocerTecnica(self) :
+        //    pass
 
-    //def conocerTipoIngreso(self) :
-    //    pass
+        //def conocerTematica(self) :
+        //    pass
+
+        //def conocerTipoIngreso(self) :
+        //    pass
     }
 }
