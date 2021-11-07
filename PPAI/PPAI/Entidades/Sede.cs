@@ -89,6 +89,10 @@ namespace PPAI.Entidades
             {
                 var estrat = new EstrategiaDuracionCompleta();
                 this.agregarEstrategia(estrat);
+
+            } else if(tipoVisita.mostrarNombre() == "Por Exposicion")
+            {
+                //estrat = new EstrategiaDuracionPorExposicion();
             }
 
         }

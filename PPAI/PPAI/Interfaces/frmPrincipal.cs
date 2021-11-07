@@ -17,7 +17,7 @@ namespace PPAI
         public GestorVentaEntradas gestor;
         public frmPrincipal()
         {
-            gestor = new GestorVentaEntradas();
+            gestor = new GestorVentaEntradas(this);
             InitializeComponent();
         }
 
@@ -34,6 +34,7 @@ namespace PPAI
         private void btn_registrar_Click(object sender, EventArgs e)
         {
             this.gestor.opcionRegistrarVentaEntradas();
+            this.Show();
 
         }
     }

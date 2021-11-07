@@ -19,15 +19,8 @@ namespace PPAI.Interfaces
         {
             this.gestor = _gestor;
             InitializeComponent();
-            //habilitarPantalla();
-            //gestor.opcionRegistrarVentaEntradas();
-        }
 
-        private void pantallaRegistrarVentaEntradas_Load(object sender, EventArgs e)
-        {
-            
         }
-
         private void habilitarPantalla()
         {
             this.ShowDialog();
@@ -36,21 +29,25 @@ namespace PPAI.Interfaces
 
         public void setearUsuario(string nombre)
         {
+            // Setea el textbox con el nombre de usuario
             txt_usuario.Text = nombre;
         }
 
         public void setearSede(string nombre)
         {
+            // Setea el textbox con el nombre de sede
             txt_sede.Text = nombre;
         }
 
         public void setearMontoGuia(int montoAdicionalGuia)
         {
+            // Setea el monto por guia
             txt_monto_guia.Text = Convert.ToString(montoAdicionalGuia);
         }
 
         public void mostrarTarifasVigentes(string[,] tv)
         {
+            // Carga el datagridview con la informacion de las tarifas vigentes
             for(int i = 0; i < tv.GetLength(0);i++)
             {
                 var fila = new string[]
@@ -61,11 +58,6 @@ namespace PPAI.Interfaces
                 };
                 dgv_tarifas.Rows.Add(fila);
             }
-        }
-
-        public Tarifa tomarSeleccionTarifa()
-        {
-            throw new NotImplementedException();
         }
 
         public void solicitarSeleccionTarifa(List<TipoEntrada> tipoEntradas, List<TipoVisita> tipoVisitas)
@@ -104,6 +96,8 @@ namespace PPAI.Interfaces
 
         private void btn_continuar_Click(object sender, EventArgs e)
         {
+            // Validaciones y luego llama al metodo tomarSeleccionTarifa de la pantalla
+
             if (((TipoEntrada)cmb_tipo_entrada.SelectedItem).id_tipo_entrada == -1)
             {
                 MessageBox.Show("Debe seleccionar un tipo de entrada", "Error", MessageBoxButtons.OKCancel);
@@ -114,13 +108,12 @@ namespace PPAI.Interfaces
                 MessageBox.Show("Debe seleccionar un tipo de visita", "Error", MessageBoxButtons.OKCancel);
                 return;
             }
-            gestor.tomarSeleccionTarifa();
-
-            
+            this.tomarSeleccionTarifa();  
         }
 
-        public List<string> tomarSeleccionTarifa(GestorVentaEntradas _gestor)
+        public void tomarSeleccionTarifa()
         {
+            // Toma los datos de la tarifa seleccionada y se los envia como parametro al gestor
             var tarifaSeleccionada = new List<string>();
 
             var entrada = ((TipoEntrada)cmb_tipo_entrada.SelectedItem).id_tipo_entrada.ToString();
@@ -131,12 +124,13 @@ namespace PPAI.Interfaces
             tarifaSeleccionada.Add(visita);
             tarifaSeleccionada.Add(guia);
 
-            return tarifaSeleccionada;
+            this.gestor.tomarSeleccionTarifa(tarifaSeleccionada);
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             this.Dispose();
+
         }
     }
 }

@@ -11,6 +11,10 @@ namespace PPAI.ClasesDiseño
     {
         public int calcularDuracionAExposicionesVigentes(DateTime fechaActual, List<Exposicion> exposiciones)
         {
+            // Metodo polimorfico implementado de la interfaz IEstrategiaCalcularDuracionExposicion
+            // Es un loop que a cada exposicion le pregunta si esta vigente y si lo está
+            // llama al metodo calcularDuracionObrasExpuestas que devuelve un int representando el tiempo
+            // En minutos que dura recorrer todas las obras de la exposicion
             int i = 0;
             int duracionVisita = 0;
             while (i < exposiciones.Count())

@@ -11,6 +11,11 @@ namespace PPAI.Gestor
 {
     public class GestorVentaEntradas
     {
+        public GestorVentaEntradas(frmPrincipal _principal)
+        {
+            principal = _principal;
+        }
+        public frmPrincipal principal;
         public Empleado empleadoLogueado { get; set; }
         public Sesion sesionActual = new Sesion() {
             FechaHoraInicio = DateTime.Now,
@@ -151,11 +156,10 @@ namespace PPAI.Gestor
 
         }
 
-        public void tomarSeleccionTarifa()
+        public void tomarSeleccionTarifa(List<string> tarifaS)
         {
             //  Guarda los datos de la tarifa seleccionada, incluyendo si la misma es guiada o no
             // Como la informacion viene en formato texto, obtenemos el objeto tarifa a partir de la informacion recibida
-            var tarifaS = this.pantallaRegistrarVentaEntradas.tomarSeleccionTarifa(this);
             this.tarifaSeleccionada = tarifaServicio.obtenerTarifa(Convert.ToInt32(tarifaS[0]), Convert.ToInt32(tarifaS[1]));
             this.esGuiada = Convert.ToBoolean(tarifaS[2]);
 
@@ -195,17 +199,6 @@ namespace PPAI.Gestor
 
             this.pantallaRegistrarVentaEntradas2.solicitarSeleccionCantEntradas();
             this.pantallaRegistrarVentaEntradas2.ShowDialog();
-
-            //if (tarifaSeleccionada.tipoVisita.Nombre == "Completa")
-            //{
-            //    // Calcula y almacena la duracion estimada de la visita completa al museo
-            //    this.duracionEstimada = this.sedeActual.calcularDuracionAExposicionesVigentes(this.fechaActual);
-            //    this.pantallaRegistrarVentaEntradas2.setDuracion(this.duracionEstimada);
-
-            //    //  Instancia, con un mensaje a la pantalla, la continuacion del CU
-            //    this.pantallaRegistrarVentaEntradas2.solicitarSeleccionCantEntradas();
-            //    this.pantallaRegistrarVentaEntradas2.ShowDialog();
-            //}
 
         }
 
@@ -353,6 +346,7 @@ namespace PPAI.Gestor
                 this.entradasVendidas.Add(entrada);
                 i += 1;
             }
+            this.entradaServicio.registrarEntradas(this.entradasVendidas);
             this.imprimirEntradas();
             this.calcularCantVisitantesActual(this.cantidadEntradas);
         }
@@ -402,7 +396,10 @@ namespace PPAI.Gestor
         {
             //Metodo que indica el final del CU. No cerramos el programa, para poder visualizar las pantallas
             //del final del CU. Caso contrario, se cerraría el programa con quit()
-            
+            this.pantallaRegistrarVentaEntradas2.Dispose();
+            this.pantallaRegistrarVentaEntradas.Dispose();
+            this._detalleEntada.Dispose();
+            principal.Activate();
         
         }
     }

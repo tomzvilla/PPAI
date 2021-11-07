@@ -245,7 +245,6 @@ namespace PPAI.Interfaces
             this.Controls.Add(this.lbl_titulo);
             this.Name = "pantallaRegistrarVentaEntradas";
             this.Text = "Venta Entradas Museo";
-            this.Load += new System.EventHandler(this.pantallaRegistrarVentaEntradas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_tarifas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

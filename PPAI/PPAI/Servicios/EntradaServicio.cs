@@ -21,5 +21,10 @@ namespace PPAI.Servicios
         public List<Entradas> obtenerEntradas() {
             return entradaRepositorio.obtenerEntradas();
         }
+
+        public void registrarEntradas(List<Entradas> entradasVendidas)
+        {
+            entradaRepositorio.registrarEntradas(entradasVendidas);
+        }
     }
 }
